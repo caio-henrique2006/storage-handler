@@ -1,0 +1,12 @@
+/* Estilo da página principal */
+.Main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: rgb(202, 202, 202);
+}
+.Main_left {
+    grid-column: 0;
+}
+.Main_right {
+    grid-column: 1;
+}

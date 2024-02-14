@@ -1,5 +1,23 @@
 import * as React from 'react';
+import "./style/Main.css"
 import { createRoot } from 'react-dom/client';
 
-const root = createRoot(document.body);
-root.render(<h2>Hello from React!</h2>);
+// Components:
+import Header from "./components/Header.jsx";
+
+function Main () {
+    return (
+        <div className="Main">
+            <div className="Main_Left">
+                <Header/>
+            </div>
+            <div className="Main_Right">
+                <p>Right</p>
+            </div>
+        </div>
+    )
+}
+
+// Renderizando Componente principal (Main) no div root no index.html
+const root = createRoot(document.getElementById('root'));
+root.render(<Main/>);
