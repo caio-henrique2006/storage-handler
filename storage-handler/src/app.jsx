@@ -8,10 +8,10 @@ import Header from "./components/Header.jsx";
 function Main () {
     return (
         <div className="Main">
-            <div className="Main_Left">
+            <div className="Main_left">
                 <Header/>
             </div>
-            <div className="Main_Right">
+            <div className="Main_right">
                 <p>Right</p>
             </div>
         </div>

@@ -1,12 +1,43 @@
-/* Estilo da página principal */
+/* Estilo principal da página */
 .Main {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
     background-color: rgb(202, 202, 202);
 }
 .Main_left {
-    grid-column: 0;
+    grid-column: 1;
+    margin: 20px;
 }
 .Main_right {
-    grid-column: 1;
+    grid-column: 2;
+    margin: 20px;
+}
+/* Search Bar component */
+.SearchBar {
+    width: 100%;
+}
+.SearchBar_container {
+    width: 100%;
+}
+.SearchBar_container_input {
+    width: 95%;
+    height: 25px;
+    float: none;
+}
+
+/* Add component*/
+.Add_icon {
+    width: 30px;
+    height: 30px;
+    background-image: url('../assets/plus.png');
+    background-size: cover;
+}
+
+/* Header component */
+.Header_content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
