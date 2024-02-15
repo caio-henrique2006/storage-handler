@@ -27,11 +27,16 @@
 }
 
 /* Add component*/
-.Add_icon {
+.Add {
+    width: 40px;
+    height: 40px;
+}
+.Add_Button {
     width: 30px;
     height: 30px;
-    background-image: url('../assets/plus.png');
-    background-size: cover;
+}
+.Add_icon:hover {
+    cursor: pointer;
 }
 
 /* Header component */
