@@ -21,22 +21,40 @@
     width: 100%;
 }
 .SearchBar_container_input {
-    width: 95%;
+    width: 90%;
     height: 25px;
     float: none;
+    padding: 5px;
+    border: 1px solid black;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: white;
+    background-image: url('../assets/search.png');
+    background-position: 10px;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    padding-left: 40px;
+    outline: none;
 }
-
+.SearchBar_container_input:focus {
+    border: 1px solid black;
+    background-color: rgb(244, 243, 243);
+}
 /* Add component*/
 .Add {
-    width: 40px;
-    height: 40px;
+    width: 10%;
+    height: 10%;
 }
-.Add_Button {
-    width: 30px;
-    height: 30px;
+.Add_icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 5px;
+    background-image: url("../assets/plus.png");
+    background-size: cover;
 }
 .Add_icon:hover {
     cursor: pointer;
+    background-color: rgb(172, 172, 172);
 }
 
 /* Header component */
@@ -44,5 +62,5 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 }
