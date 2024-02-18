@@ -4,12 +4,18 @@ import { createRoot } from 'react-dom/client';
 
 // Components:
 import Header from "./components/Header.jsx";
+import Card from "./components/Card.jsx";
 
 function Main () {
     return (
         <div className="Main">
             <div className="Main_left">
                 <Header/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
             </div>
             <div className="Main_right">
                 <p>Right</p>
