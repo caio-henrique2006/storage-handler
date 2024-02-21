@@ -1,5 +1,6 @@
 body {
     background-color: rgb(244, 244, 244);
+    overflow-x: scroll;
 }
 
 /* Estilo principal da página */
@@ -12,6 +13,7 @@ body {
     grid-column: 1;
     margin: 20px;
     border-right: 2px solid black;
+    height: 100%;
 }
 .Main_right {
     grid-column: 2;
@@ -58,7 +60,6 @@ body {
 }
 .Add_icon:hover {
     cursor: pointer;
-    background-color: rgb(172, 172, 172);
 }
 
 /* Header component */
@@ -100,4 +101,49 @@ body {
     font-size: 25px;
     font-weight: 500;
     margin-right: 20px;
+}
+
+/* Properties component */
+.Properties_title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 0px;
+}
+.Properties_properties {
+    font-size: 20px;
+}
+.Properties_buttons {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+.Properties_buttons div {
+    background-color: rgb(202, 202, 202);
+    border-radius: 5px;
+    padding: 30px 120px;
+    margin: 10px;
+    font-size: 24px;
+}
+.Properties_buttons div:hover {
+    cursor: pointer;
+    background-color: rgb(189, 189, 189);
+}
+.Properties_historic {
+    font-size: 20px;
+}
+
+/* Historic */
+.Historic {
+    overflow-y: scroll;
+    height: 300px;
+}
+.Historic_Card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    border-bottom: 1px solid black;
+    font-size: 18px;
 }

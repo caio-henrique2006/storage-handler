@@ -5,6 +5,7 @@ import { createRoot } from 'react-dom/client';
 // Components:
 import Header from "./components/Header.jsx";
 import Card from "./components/Card.jsx";
+import Properties from "./components/Properties.jsx"
 
 function Main () {
     return (
@@ -18,7 +19,7 @@ function Main () {
                 <Card/>
             </div>
             <div className="Main_right">
-                <p>Right</p>
+                <Properties/>
             </div>
         </div>
     )
