@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, dialog, remote } = require('electron');
 const path = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -6,28 +6,22 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+var mainWindow;
+
 const createWindow = () => {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+      nodeIntegration: true,
+      contextIsolation: false,
     },
   });
-  const window_modal_add = new BrowserWindow({ 
-    parent: mainWindow,
-    modal: true,
-    show: false,
-    width: 800,
-    height: 600,
-    webPreferences: {
-      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
-    },
-  })
+  
   mainWindow.maximize()
   mainWindow.show()
-  window_modal_add.show()
 
   // and load the index.html of the app.
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
@@ -35,6 +29,24 @@ const createWindow = () => {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 };
+
+function createAddModal() {
+  AddModal = new BrowserWindow({
+    parent: mainWindow,
+    modal: true,
+    width: 600,
+    height: 400,
+    webPreferences: {
+      nodeIntegration: true,
+    },
+  });
+
+  AddModal.loadFile("./src/modal.html");
+
+  AddModal.on('closed', function () {
+    AddModal = null;
+  });
+}
 
 
 
@@ -60,6 +72,13 @@ app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
+});
+
+// Handle the button click from the renderer process
+const { ipcMain } = require('electron');
+
+ipcMain.on('open-add-modal', () => {
+  createAddModal();
 });
 
 // In this file you can include the rest of your app's specific main process
