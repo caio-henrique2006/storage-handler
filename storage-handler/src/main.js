@@ -30,23 +30,23 @@ const createWindow = () => {
   mainWindow.webContents.openDevTools();
 };
 
-function createAddModal() {
-  AddModal = new BrowserWindow({
-    parent: mainWindow,
-    modal: true,
-    width: 600,
-    height: 400,
-    webPreferences: {
-      nodeIntegration: true,
-    },
-  });
+// function createAddModal() {
+//   AddModal = new BrowserWindow({
+//     parent: mainWindow,
+//     modal: true,
+//     width: 600,
+//     height: 400,
+//     webPreferences: {
+//       nodeIntegration: true,
+//     },
+//   });
 
-  AddModal.loadFile("./src/modal.html");
+//   AddModal.loadFile("./src/modal.html");
 
-  AddModal.on('closed', function () {
-    AddModal = null;
-  });
-}
+//   AddModal.on('closed', function () {
+//     AddModal = null;
+//   });
+// }
 
 
 

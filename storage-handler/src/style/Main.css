@@ -147,3 +147,15 @@ body {
     border-bottom: 1px solid black;
     font-size: 18px;
 }
+
+/* Modal */
+.Modal {
+    /*
+     var()
+     calc()
+    */
+    position: absolute;
+    background-color: black;
+    height: 500px;
+    width: 500px;
+}
