@@ -149,13 +149,95 @@ body {
 }
 
 /* Modal */
+
 .Modal {
     /*
      var()
      calc()
     */
+    --height: 500px;
+    --width: 800px;
+
     position: absolute;
-    background-color: black;
-    height: 500px;
-    width: 500px;
+    left: calc(50% - calc(var(--width) / 2));
+    top: calc(50% - calc(var(--height) / 2));
+    background-color: #181818;
+    border-radius: 5px;
+    height: var(--height);
+    width: var(--width);
+    color: white;
+    padding: 30px;
+    filter: drop-shadow(10px 10px 10px gray);
+}
+.Modal h1 {
+    text-align: center;
+    font-size: 40px;
+    margin: 0;
+    margin-bottom: 40px;
+}
+.Modal p {
+    font-size: 26px;
+    margin: 0;
+    margin-bottom: 5px;
+}
+.Modal input {
+    height: 40px;
+    width: 90%;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    outline: none;
+    font-size: 20px;
+}
+.Modal textarea {
+    height: 200px;
+    width: 95%;
+    font-size: 20px;
+    outline: none;
+    border-radius: 5px;
+}
+.Modal textarea:focus {
+    background-color: rgb(244, 243, 243);
+}
+.Modal input:focus {
+    background-color: rgb(244, 243, 243);
+}
+.Modal_close {
+    --width: 20px;
+    --height: 20px;
+
+    position: absolute;
+    left: calc(100% - var(--width) - 15px);
+    top: 15px;
+    width: var(--width);
+    height: var(--height);
+    background-image: url("../assets/close.png");
+    background-size: cover;
+    filter: invert(100%);
+}
+.Modal_ok {
+    background-color: rgb(202, 202, 202);
+    border-radius: 5px;
+    padding: 20px 80px;
+    font-size: 24px;
+    text-align: center;
+    font-size: 34px;
+    color: black;
+}
+.Modal_ok:hover {
+    cursor: pointer;
+    background-color: rgb(189, 189, 189);
+}
+.Modal_close:hover {
+    cursor: pointer;
+}
+.Modal_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+.Modal_left {
+    grid-column: 1;
+}
+.Modal_right {
+    grid-column: 2;
 }
