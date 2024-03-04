@@ -14,19 +14,19 @@ export default function Add () {
     function Modal () {
         return (
             <div className="Modal">
-                <h1>Novo Produto</h1>
+                <h1 className="Modal_h1">Novo Produto</h1>
                 <div className="Modal_grid">
                     <div className="Modal_left">
-                        <p>Nome do produto:</p>
-                        <input />
-                        <p>Estoque:</p>
-                        <input />
-                        <p>Preço:</p>
-                        <input />
+                        <p className="Modal_p">Nome do produto:</p>
+                        <input className="Modal_input" />
+                        <p className="Modal_p">Estoque:</p>
+                        <input className="Modal_input" />
+                        <p className="Modal_p">Preço:</p>
+                        <input className="Modal_input" />
                     </div>
                     <div className="Modal_right">
-                        <p>Descrição</p>
-                        <textarea className="Modal_input_description" />
+                        <p className="Modal_p">Descrição</p>
+                        <textarea className="Modal_textarea" />
                     </div>
                 </div>
                 <div className="Modal_close" onClick={openClose}/>

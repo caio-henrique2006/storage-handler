@@ -169,18 +169,18 @@ body {
     padding: 30px;
     filter: drop-shadow(10px 10px 10px gray);
 }
-.Modal h1 {
+.Modal_h1 {
     text-align: center;
     font-size: 40px;
     margin: 0;
     margin-bottom: 40px;
 }
-.Modal p {
+.Modal_p {
     font-size: 26px;
     margin: 0;
     margin-bottom: 5px;
 }
-.Modal input {
+.Modal_input {
     height: 40px;
     width: 90%;
     border-radius: 5px;
@@ -188,17 +188,17 @@ body {
     outline: none;
     font-size: 20px;
 }
-.Modal textarea {
+.Modal_textarea {
     height: 200px;
     width: 95%;
     font-size: 20px;
     outline: none;
     border-radius: 5px;
 }
-.Modal textarea:focus {
+.Modal_textarea:focus {
     background-color: rgb(244, 243, 243);
 }
-.Modal input:focus {
+.Modal_input:focus {
     background-color: rgb(244, 243, 243);
 }
 .Modal_close {
@@ -240,4 +240,22 @@ body {
 }
 .Modal_right {
     grid-column: 2;
+}
+
+/* EntryExit */
+
+.EntryExit_Modal {
+    --height: 400px;
+    --width: 300px;
+
+    position: absolute;
+    left: calc(50% - calc(var(--width) / 2));
+    top: calc(50% - calc(var(--height) / 2));
+    background-color: #181818;
+    border-radius: 5px;
+    height: var(--height);
+    width: var(--width);
+    color: white;
+    padding: 30px;
+    filter: drop-shadow(10px 10px 10px gray);
 }
