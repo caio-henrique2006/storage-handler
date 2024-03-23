@@ -12,7 +12,7 @@ async function getData(callback) {
 }
 function showData(data) {
     console.log(data);
-    // const sqlite3 = require('sqlite3').verbose();
+    const sqlite3 = require('sqlite3').verbose();
 }
 
 function Main () {
