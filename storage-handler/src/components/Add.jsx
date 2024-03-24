@@ -1,14 +1,54 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 // const { ipcRenderer } = window.require('electron');
 
 export default function Add () {
 
+    const productName = useRef();
+    const productStorage = useRef();
+    const productPrice = useRef();
+    const productDescription = useRef();
     const [isOpen, setIsOpen] = useState(false);
 
     const openClose = () => {
         setIsOpen(!isOpen)
+    }
+
+    function addProduct() {
+        console.log(productName.current.value);
+        console.log(productStorage.current.value);
+        console.log(productPrice.current.value);
+        console.log(productDescription.current.value);
+    }
+
+    async function addProductDatabase(name, storage, price, description) {
+        const sqlite3 = require('sqlite3').verbose();
+        const path = require('path');
+        const dbPath = slash(path.resolve('src/database/chinook.db'));
+        console.log(dbPath);
+    
+        let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY, (err) => {
+            if (err) {
+                return console.error(err);
+            }
+            console.log("Connected to the sqlite data");
+        });
+    
+        db.run(`INSERT INTO product(name,storage,price,description) VALUES(?, ?, ?, ?)`, [name, storage, price, description], function(err) {
+            if (err) {
+              return console.log(err.message);
+            }
+            // get the last insert id
+            console.log(`A row has been inserted with rowid ${this.lastID}`);
+        });
+    
+        db.close((err) => {
+            if (err) {
+                return console.error(err.message);
+            }
+            console.log("Close database connection");
+        });
     }
 
     function Modal () {
@@ -18,19 +58,19 @@ export default function Add () {
                 <div className="Modal_grid">
                     <div className="Modal_left">
                         <p className="Modal_p">Nome do produto:</p>
-                        <input className="Modal_input" />
+                        <input className="Modal_input" ref={productName}/>
                         <p className="Modal_p">Estoque:</p>
-                        <input className="Modal_input" />
+                        <input className="Modal_input" ref={productStorage}/>
                         <p className="Modal_p">Preço:</p>
-                        <input className="Modal_input" />
+                        <input className="Modal_input" ref={productPrice}/>
                     </div>
                     <div className="Modal_right">
                         <p className="Modal_p">Descrição</p>
-                        <textarea className="Modal_textarea" />
+                        <textarea className="Modal_textarea" ref={productDescription}/>
                     </div>
                 </div>
                 <div className="Modal_close" onClick={openClose}/>
-                <div className="Modal_ok">Criar</div>
+                <div className="Modal_ok" onClick={addProduct}>Criar</div>
             </div>
         )
     }
