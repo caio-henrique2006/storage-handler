@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState, useRef } from 'react';
+import slash from 'slash';
 
 // const { ipcRenderer } = window.require('electron');
 
@@ -20,15 +21,16 @@ export default function Add () {
         console.log(productStorage.current.value);
         console.log(productPrice.current.value);
         console.log(productDescription.current.value);
+        addProductDatabase(productName.current.value, productStorage.current.value, productPrice.current.value, productDescription.current.value)
     }
 
     async function addProductDatabase(name, storage, price, description) {
         const sqlite3 = require('sqlite3').verbose();
         const path = require('path');
-        const dbPath = slash(path.resolve('src/database/chinook.db'));
+        const dbPath = slash(path.resolve('src/database/dataBase.db'));
         console.log(dbPath);
     
-        let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY, (err) => {
+        let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE, (err) => {
             if (err) {
                 return console.error(err);
             }
@@ -60,9 +62,9 @@ export default function Add () {
                         <p className="Modal_p">Nome do produto:</p>
                         <input className="Modal_input" ref={productName}/>
                         <p className="Modal_p">Estoque:</p>
-                        <input className="Modal_input" ref={productStorage}/>
+                        <input type="number" className="Modal_input" ref={productStorage}/>
                         <p className="Modal_p">Preço:</p>
-                        <input className="Modal_input" ref={productPrice}/>
+                        <input type="number" className="Modal_input" ref={productPrice}/>
                     </div>
                     <div className="Modal_right">
                         <p className="Modal_p">Descrição</p>

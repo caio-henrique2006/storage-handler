@@ -13,7 +13,7 @@ function Main () {
     async function getData(callback) {
         const sqlite3 = require('sqlite3').verbose();
         const path = require('path');
-        const dbPath = slash(path.resolve('src/database/chinook.db'));
+        const dbPath = slash(path.resolve('src/database/dataBase.db'));
         console.log(dbPath);
     
         let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY, (err) => {
@@ -25,11 +25,9 @@ function Main () {
     
         let sql = `
         SELECT 
-            title
+            *
         FROM
-            albums
-        WHERE
-            artistId = 3
+            product
         `;
     
         db.all(sql, [], (err, rows) => {
@@ -48,7 +46,7 @@ function Main () {
     }
     
     function showData(data) {
-        setData(data[0].Title);
+        console.log(data);
     }
     
     const [data, setData] = useState("No data");
