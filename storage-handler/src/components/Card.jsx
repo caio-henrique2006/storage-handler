@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-export default function Card () {
+export default function Card ({name, storage, price, id}) {
     return(
-        <div className="Card">
+        <div onClick={() => {console.log(id)}} className="Card">
             <div className="Card_left">
-                <p className="Card_left_storage">26</p>
-                <p>Nome do produto aoijksnalfk dasjbijlsfd aisofnak</p>
+                <p className="Card_left_storage">{storage}</p>
+                <p>{name}</p>
             </div>
-            <p>$45</p>
+            <p>{price}</p>
         </div>
     )
 }

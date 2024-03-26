@@ -1,16 +1,15 @@
 import * as React from 'react';
 import slash from 'slash';
-import "./style/Main.css"
-import { createRoot } from 'react-dom/client';
 import { useState } from 'react';
 
 // Components:
-import Header from "./components/Header.jsx";
-import ShowProduct from './components/ShowProduct.jsx';
-import Properties from "./components/Properties.jsx"
+import Card from "./Card.jsx";
 
-function Main () {
-    async function getData(callback) {
+export default function ShowProduct () {
+
+    const [products, setProducts] = useState({});
+
+    async function getProduct(showData) {
         const sqlite3 = require('sqlite3').verbose();
         const path = require('path');
         const dbPath = slash(path.resolve('src/database/dataBase.db'));
@@ -34,7 +33,7 @@ function Main () {
             if (err) {
                 throw err;
             }
-            callback(rows);
+            showData(rows);
         });
     
         db.close((err) => {
@@ -43,27 +42,35 @@ function Main () {
             }
             console.log("Close database connection");
         });
-    }
-    
-    function showData(data) {
+    }   
+
+    function ShowData(data) {
+        const UI = data.forEach(
+            (item) => {
+                <Card 
+                    name={item.name}
+                    storage={item.storage}
+                    price={item.price}
+                    id={item.product_id}
+                />
+            })
         console.log(data);
-        data.forEach((e) => {console.log(e)});
+        setProducts(UI);
     }
 
-    return (
-        <div className="Main">
-            <div className="Main_left">
-                <Header/>
-                <ShowProduct/>
-            </div>
-            <div className="Main_right">
-                <Properties/>
-            </div>
-            <button onClick={() => {getData(showData)}}>Click</button>
+    // Execute in time:
+    getProduct(ShowData)
+
+    return(
+        <div>
+            {products}
         </div>
+
+        // <Card
+        //     name="Blusa"
+        //     storage={20}
+        //     price={20.5}
+        //     id={20}
+        // /> 
     )
 }
-
-// Renderizando Componente principal (Main) no div root no index.html
-const root = createRoot(document.getElementById('root'));
-root.render(<Main/>);
