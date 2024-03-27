@@ -4,7 +4,7 @@ import { useState } from 'react';
 // components:
 import Historic from './Historic.jsx';
 
-export default function Properties () {
+export default function Properties ({ name, storage, price, description }) {
 
     const [isOpen, setIsOpen] = useState(false);
     const [entryOrExit, setEntryOrExit] = useState("");
@@ -37,10 +37,10 @@ export default function Properties () {
 
     return(
         <div className="Properties">
-            <p className="Properties_title">Nome do produto</p>
-            <p className="Properties_properties"><b>Total em estoque:</b> 65</p>
-            <p className="Properties_properties"><b>Preço:</b> 20$</p>
-            <p className="Properties_properties"><b>Descrição:</b> Um produto muito legal</p>
+            <p className="Properties_title">{name}</p>
+            <p className="Properties_properties"><b>Total em estoque:</b> {storage}</p>
+            <p className="Properties_properties"><b>Preço:</b> {price}</p>
+            <p className="Properties_properties"><b>Descrição:</b> {description}</p>
             <div className="Properties_buttons">
                 <div onClick={changeToEntry}>Entrada</div>
                 <div onClick={changeToExit}>Saída</div>

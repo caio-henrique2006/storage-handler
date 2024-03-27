@@ -5,16 +5,17 @@ import { useState, useEffect } from 'react';
 // Components:
 import Card from "./Card.jsx";
 
-export default function ShowProduct () {
+export default function ShowProduct ({setId, rerender}) {
 
+    // States:
     const [data, setData] = useState(null);
     const [load, setLoad] = useState(false);
 
+    // Data fetching function:
     async function fetchData(setData) {
         const sqlite3 = require('sqlite3').verbose();
         const path = require('path');
         const dbPath = slash(path.resolve('src/database/dataBase.db'));
-        console.log(dbPath);
     
         let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY, (err) => {
             if (err) {
@@ -22,7 +23,8 @@ export default function ShowProduct () {
             }
             console.log("Connected to the sqlite data");
         });
-    
+        
+        // sql command
         let sql = `
         SELECT 
             *
@@ -34,6 +36,7 @@ export default function ShowProduct () {
             if (err) {
                 throw err;
             }
+            // Callback directly to set the state "data"
             setData(rows);
         });
     
@@ -44,15 +47,17 @@ export default function ShowProduct () {
             console.log("Close database connection");
         });
     }   
+
     // Execute after render:
     useEffect(() => {
         fetchData(setData);
         console.log(data);
-    }, [load]);
+    }, [load]); // Load is used to make the useEffect only render when he changes. 
 
     return(
         <div>
             {
+                // Check if the value of data is null and render the cards
                 data == null ? null : 
                 data.map((item) => {
                     return(
@@ -62,19 +67,12 @@ export default function ShowProduct () {
                             storage={item.storage}
                             price={item.price}
                             id={item.product_id}
+                            setId={setId}
+                            rerender={rerender}
                         />
                     )
                 })
             }
         </div>
-
-        // <Card
-        //     name="Blusa"
-        //     storage={20}
-        //     price={20.5}
-        //     id={20}
-        // /> 
     )
 }
-
-/*https://www.youtube.com/watch?v=bP61ICOgQzY&ab_channel=RogerMelo*/

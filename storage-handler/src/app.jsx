@@ -2,7 +2,7 @@ import * as React from 'react';
 import slash from 'slash';
 import "./style/Main.css"
 import { createRoot } from 'react-dom/client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // Components:
 import Header from "./components/Header.jsx";
@@ -10,7 +10,12 @@ import ShowProduct from './components/ShowProduct.jsx';
 import Properties from "./components/Properties.jsx"
 
 function Main () {
-    async function getData(callback) {
+
+    const [id, setId] = useState(null);
+    const [data, setData] = useState(null);
+    const [load, setLoad] = useState(false);
+
+    async function getProperties(setData) {
         const sqlite3 = require('sqlite3').verbose();
         const path = require('path');
         const dbPath = slash(path.resolve('src/database/dataBase.db'));
@@ -28,13 +33,16 @@ function Main () {
             *
         FROM
             product
+        WHERE
+            product_id = ?
         `;
     
-        db.all(sql, [], (err, rows) => {
+        db.get(sql, [id], (err, row) => {
             if (err) {
-                throw err;
+              return console.error(err.message);
             }
-            callback(rows);
+            console.log(row);
+            setData(row);
         });
     
         db.close((err) => {
@@ -44,22 +52,32 @@ function Main () {
             console.log("Close database connection");
         });
     }
-    
-    function showData(data) {
-        console.log(data);
-        data.forEach((e) => {console.log(e)});
-    }
+
+    useEffect(() => {
+        getProperties(setData);
+    }, [load])  
 
     return (
         <div className="Main">
             <div className="Main_left">
                 <Header/>
-                <ShowProduct/>
+                <ShowProduct
+                    setId = {setId}
+                    rerender = {setLoad}
+                />
             </div>
             <div className="Main_right">
-                <Properties/>
+                {
+                    data == null ? <div><h1>Selecione um produto</h1></div> : 
+                        <Properties
+                            name={data.name}
+                            storage={data.storage}
+                            price={data.price}
+                            description={data.description}
+                        />
+                }
             </div>
-            <button onClick={() => {getData(showData)}}>Click</button>
+            <button onClick={() => {console.log(data, id)}}>Click</button>
         </div>
     )
 }
