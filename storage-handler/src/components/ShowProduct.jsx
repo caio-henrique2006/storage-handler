@@ -1,15 +1,16 @@
 import * as React from 'react';
 import slash from 'slash';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // Components:
 import Card from "./Card.jsx";
 
 export default function ShowProduct () {
 
-    const [products, setProducts] = useState({});
+    const [data, setData] = useState(null);
+    const [load, setLoad] = useState(false);
 
-    async function getProduct(showData) {
+    async function fetchData(setData) {
         const sqlite3 = require('sqlite3').verbose();
         const path = require('path');
         const dbPath = slash(path.resolve('src/database/dataBase.db'));
@@ -33,7 +34,7 @@ export default function ShowProduct () {
             if (err) {
                 throw err;
             }
-            showData(rows);
+            setData(rows);
         });
     
         db.close((err) => {
@@ -43,27 +44,28 @@ export default function ShowProduct () {
             console.log("Close database connection");
         });
     }   
-
-    function ShowData(data) {
-        const UI = data.forEach(
-            (item) => {
-                <Card 
-                    name={item.name}
-                    storage={item.storage}
-                    price={item.price}
-                    id={item.product_id}
-                />
-            })
+    // Execute after render:
+    useEffect(() => {
+        fetchData(setData);
         console.log(data);
-        setProducts(UI);
-    }
-
-    // Execute in time:
-    getProduct(ShowData)
+    }, [load]);
 
     return(
         <div>
-            {products}
+            {
+                data == null ? null : 
+                data.map((item) => {
+                    return(
+                        <Card 
+                            key={item.product_id}
+                            name={item.name}
+                            storage={item.storage}
+                            price={item.price}
+                            id={item.product_id}
+                        />
+                    )
+                })
+            }
         </div>
 
         // <Card
@@ -74,3 +76,5 @@ export default function ShowProduct () {
         // /> 
     )
 }
+
+/*https://www.youtube.com/watch?v=bP61ICOgQzY&ab_channel=RogerMelo*/
