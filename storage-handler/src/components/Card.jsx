@@ -2,6 +2,7 @@ import * as React from 'react';
 
 export default function Card ({name, storage, price, id, setId, rerender}) {
 
+    // Função de renderizar propriedades:
     function set () {
         setId(id);
         rerender(id);

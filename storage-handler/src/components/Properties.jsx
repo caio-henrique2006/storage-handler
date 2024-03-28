@@ -3,15 +3,14 @@ import { useState } from 'react';
 
 // components:
 import Historic from './Historic.jsx';
+import EntryExit from './EntryExit.jsx';
 
-export default function Properties ({ name, storage, price, description }) {
+export default function Properties ({ name, storage, price, description, id }) {
 
     const [isOpen, setIsOpen] = useState(false);
     const [entryOrExit, setEntryOrExit] = useState("");
 
-    const openClose = () => {
-        setIsOpen(!isOpen);
-    }
+    // Function for opening, closing and changing the modal entry and exit
     const changeToEntry = () => {
         setIsOpen(!isOpen);
         setEntryOrExit("Entrada");
@@ -20,20 +19,6 @@ export default function Properties ({ name, storage, price, description }) {
         setIsOpen(!isOpen);
         setEntryOrExit("Saída");
     }
-
-    function EntryExit () {
-        return (
-            <div className="EntryExit_Modal">
-                <h1 className="Modal_h1">{entryOrExit}</h1>
-                <p className="Modal_p">Quantidade:</p>
-                <input type="number" className="Modal_input"/>
-                <p className="Modal_p">Data:</p>
-                <input type="date" className="Modal_input"/>
-                <div className="Modal_ok">Ok</div>
-                <div className="Modal_close" onClick={openClose}/>
-            </div>
-        )
-    }       
 
     return(
         <div className="Properties">
@@ -46,13 +31,16 @@ export default function Properties ({ name, storage, price, description }) {
                 <div onClick={changeToExit}>Saída</div>
             </div>
             <div>
+                {/* Opens the modal */}
                 {
-                    isOpen ? <EntryExit isOpen={isOpen}/> : null
+                    isOpen ? <EntryExit setIsOpen={setIsOpen} entryOrExit={entryOrExit} id={id}/> : null
                 }
             </div>
             <p className="Properties_historic"><b>Histórico:</b> </p>
             <div className="Properties_historic_content">
-                <Historic />
+                <Historic 
+                    id={id}
+                />
             </div>
         </div>
     )

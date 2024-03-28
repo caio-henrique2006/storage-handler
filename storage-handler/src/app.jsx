@@ -15,45 +15,44 @@ function Main () {
     const [data, setData] = useState(null);
     const [load, setLoad] = useState(false);
 
-    async function getProperties(setData) {
-        const sqlite3 = require('sqlite3').verbose();
-        const path = require('path');
-        const dbPath = slash(path.resolve('src/database/dataBase.db'));
-        console.log(dbPath);
-    
-        let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY, (err) => {
-            if (err) {
-                return console.error(err);
-            }
-            console.log("Connected to the sqlite data");
-        });
-    
-        let sql = `
-        SELECT 
-            *
-        FROM
-            product
-        WHERE
-            product_id = ?
-        `;
-    
-        db.get(sql, [id], (err, row) => {
-            if (err) {
-              return console.error(err.message);
-            }
-            console.log(row);
-            setData(row);
-        });
-    
-        db.close((err) => {
-            if (err) {
-                return console.error(err.message);
-            }
-            console.log("Close database connection");
-        });
-    }
-
     useEffect(() => {
+        async function getProperties(setData) {
+            const sqlite3 = require('sqlite3').verbose();
+            const path = require('path');
+            const dbPath = slash(path.resolve('src/database/dataBase.db'));
+            console.log(dbPath);
+        
+            let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY, (err) => {
+                if (err) {
+                    return console.error(err);
+                }
+                console.log("Connected to the sqlite data");
+            });
+        
+            let sql = `
+            SELECT 
+                *
+            FROM
+                product
+            WHERE
+                product_id = ?
+            `;
+        
+            db.get(sql, [id], (err, row) => {
+                if (err) {
+                  return console.error(err.message);
+                }
+                console.log(row);
+                setData(row);
+            });
+        
+            db.close((err) => {
+                if (err) {
+                    return console.error(err.message);
+                }
+                console.log("Close database connection");
+            });
+        }
         getProperties(setData);
     }, [load])  
 
@@ -74,6 +73,7 @@ function Main () {
                             storage={data.storage}
                             price={data.price}
                             description={data.description}
+                            id={data.product_id}
                         />
                 }
             </div>
