@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Historic from './Historic.jsx';
 import EntryExit from './EntryExit.jsx';
 
-export default function Properties ({ name, storage, price, description, id }) {
+export default function Properties ({ name, storage, price, description, id, loadValue }) {
 
     const [isOpen, setIsOpen] = useState(false);
     const [entryOrExit, setEntryOrExit] = useState("");
@@ -40,6 +40,7 @@ export default function Properties ({ name, storage, price, description, id }) {
             <div className="Properties_historic_content">
                 <Historic 
                     id={id}
+                    loadValue={loadValue}
                 />
             </div>
         </div>

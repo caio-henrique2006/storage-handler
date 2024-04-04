@@ -5,12 +5,11 @@ import {useState, useEffect} from 'react';
 // components:
 import Historic_Card from './Historic_Card.jsx';
 
-export default function Historic ({id}) {
+export default function Historic ({id, loadValue}) {
 
     console.log("The id is: ", id);
 
     const [data, setData] = useState(null);
-    const [load, setLoad] = useState(null);
 
     // Executes after render:
     useEffect(() => {
@@ -54,7 +53,7 @@ export default function Historic ({id}) {
         });
     }  
     fetchHistoric(setData);
-    }, [load])
+    }, [loadValue])
 
     return(
         <div className="Historic">

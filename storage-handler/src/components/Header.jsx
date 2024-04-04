@@ -4,12 +4,15 @@ import * as React from 'react';
 import SearchBar from "./SearchBar.jsx"
 import Add from "./Add.jsx"
 
-export default function Header () {
+export default function Header ({reLoad, loadValue}) {
     return (
         <div className="Header">
             <div className="Header_content">
                 <SearchBar/>
-                <Add/>
+                <Add
+                    reLoad={reLoad}
+                    loadValue={loadValue}
+                />
             </div>
         </div>
     )

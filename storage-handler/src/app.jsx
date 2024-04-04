@@ -11,10 +11,12 @@ import Properties from "./components/Properties.jsx"
 
 function Main () {
 
+    // States:
     const [id, setId] = useState(null);
     const [data, setData] = useState(null);
     const [load, setLoad] = useState(false);
 
+    // Da fetch para o componente properties:
     useEffect(() => {
         async function getProperties(setData) {
             const sqlite3 = require('sqlite3').verbose();
@@ -59,10 +61,14 @@ function Main () {
     return (
         <div className="Main">
             <div className="Main_left">
-                <Header/>
+                <Header
+                    reLoad={setLoad} // Para re-renderizar a página
+                    loadValue={load}
+                />
                 <ShowProduct
                     setId = {setId}
-                    rerender = {setLoad}
+                    reLoad = {setLoad}
+                    loadValue={load}
                 />
             </div>
             <div className="Main_right">
@@ -74,6 +80,7 @@ function Main () {
                             price={data.price}
                             description={data.description}
                             id={data.product_id}
+                            loadValue={load}
                         />
                 }
             </div>

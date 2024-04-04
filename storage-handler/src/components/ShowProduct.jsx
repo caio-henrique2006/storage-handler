@@ -5,11 +5,10 @@ import { useState, useEffect } from 'react';
 // Components:
 import Card from "./Card.jsx";
 
-export default function ShowProduct ({setId, rerender}) {
+export default function ShowProduct ({setId, reLoad, loadValue}) {
 
     // States:
     const [data, setData] = useState(null);
-    const [load, setLoad] = useState(false);
 
     // Execute after render:
     useEffect(() => {
@@ -51,7 +50,7 @@ export default function ShowProduct ({setId, rerender}) {
         }  
         fetchData(setData);
         console.log(data);
-    }, [load]); // Load is used to make the useEffect only render when he changes. 
+    }, [loadValue]); // Load is used to make the useEffect only render when he changes. 
 
     return(
         <div>
@@ -67,7 +66,8 @@ export default function ShowProduct ({setId, rerender}) {
                             price={item.price}
                             id={item.product_id}
                             setId={setId}
-                            rerender={rerender}
+                            reLoad = {reLoad}
+                            loadValue={loadValue}
                         />
                     )
                 })

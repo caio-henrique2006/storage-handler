@@ -4,7 +4,7 @@ import slash from 'slash';
 
 // const { ipcRenderer } = window.require('electron');
 
-export default function Add () {
+export default function Add ({ reLoad, loadValue }) {
 
     const productName = useRef();
     const productStorage = useRef();
@@ -12,15 +12,13 @@ export default function Add () {
     const productDescription = useRef();
     const [isOpen, setIsOpen] = useState(false);
 
-    const openClose = () => {
-        setIsOpen(!isOpen)
-    }
-
     function addProduct() {
         console.log(productName.current.value);
         console.log(productStorage.current.value);
         console.log(productPrice.current.value);
         console.log(productDescription.current.value);
+        reLoad(!loadValue); // Provoca a re-renderização do app
+        setIsOpen(!isOpen);
         addProductDatabase(productName.current.value, productStorage.current.value, productPrice.current.value, productDescription.current.value)
     }
 
@@ -70,7 +68,7 @@ export default function Add () {
                         <textarea className="Modal_textarea" ref={productDescription}/>
                     </div>
                 </div>
-                <div className="Modal_close" onClick={openClose}/>
+                <div className="Modal_close" onClick={() => {setIsOpen(!isOpen)}}/>
                 <div className="Modal_ok" onClick={addProduct}>Criar</div>
             </div>
         )
