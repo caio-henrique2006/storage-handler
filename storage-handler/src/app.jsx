@@ -56,6 +56,7 @@ function Main () {
             });
         }
         getProperties(setData);
+        console.log("RELOADING EVERYTHING !!!");
     }, [load])  
 
     return (
@@ -79,7 +80,8 @@ function Main () {
                             storage={data.storage}
                             price={data.price}
                             description={data.description}
-                            id={data.product_id}
+                            id={id}
+                            reLoad = {setLoad}
                             loadValue={load}
                         />
                 }

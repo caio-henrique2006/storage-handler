@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import slash from 'slash';
 
 // const { ipcRenderer } = window.require('electron');
@@ -13,41 +13,35 @@ export default function Add ({ reLoad, loadValue }) {
     const [isOpen, setIsOpen] = useState(false);
 
     function addProduct() {
-        console.log(productName.current.value);
-        console.log(productStorage.current.value);
-        console.log(productPrice.current.value);
-        console.log(productDescription.current.value);
-        reLoad(!loadValue); // Provoca a re-renderização do app
         setIsOpen(!isOpen);
+        async function addProductDatabase(name, storage, price, description) {
+            const sqlite3 = require('sqlite3').verbose();
+            const path = require('path');
+            const dbPath = slash(path.resolve('src/database/dataBase.db'));
+        
+            let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE, (err) => {
+                if (err) {
+                    return console.error(err);
+                }
+                console.log("Connected to the sqlite data");
+            });
+        
+            db.run(`INSERT INTO product(name,storage,price,description) VALUES(?, ?, ?, ?)`, [name, storage, price, description], function(err) {
+                if (err) {
+                  return console.log(err.message);
+                }
+                // get the last insert id
+                reLoad(!loadValue); // Provoca a re-renderização do app;
+            });
+        
+            db.close((err) => {
+                if (err) {
+                    return console.error(err.message);
+                }
+                console.log("Close database connection");
+            });
+        }
         addProductDatabase(productName.current.value, productStorage.current.value, productPrice.current.value, productDescription.current.value)
-    }
-
-    async function addProductDatabase(name, storage, price, description) {
-        const sqlite3 = require('sqlite3').verbose();
-        const path = require('path');
-        const dbPath = slash(path.resolve('src/database/dataBase.db'));
-    
-        let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE, (err) => {
-            if (err) {
-                return console.error(err);
-            }
-            console.log("Connected to the sqlite data");
-        });
-    
-        db.run(`INSERT INTO product(name,storage,price,description) VALUES(?, ?, ?, ?)`, [name, storage, price, description], function(err) {
-            if (err) {
-              return console.log(err.message);
-            }
-            // get the last insert id
-            console.log(`A row has been inserted with rowid ${this.lastID}`);
-        });
-    
-        db.close((err) => {
-            if (err) {
-                return console.error(err.message);
-            }
-            console.log("Close database connection");
-        });
     }
 
     function Modal () {
@@ -76,7 +70,7 @@ export default function Add ({ reLoad, loadValue }) {
 
     return (
         <div className="Add">
-            <div className="Add_icon" onClick={openClose}>
+            <div className="Add_icon" onClick={() => {setIsOpen(!isOpen)}}>
             </div>
             <div className="Add_Modal">
                 {

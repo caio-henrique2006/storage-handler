@@ -7,12 +7,11 @@ import Historic_Card from './Historic_Card.jsx';
 
 export default function Historic ({id, loadValue}) {
 
-    console.log("The id is: ", id);
-
     const [data, setData] = useState(null);
 
     // Executes after render:
     useEffect(() => {
+    console.log("The id is: ", id);
     // Fetch historic of a product:
     async function fetchHistoric (setData) {
         const sqlite3 = require('sqlite3').verbose();

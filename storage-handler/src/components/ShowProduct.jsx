@@ -53,7 +53,7 @@ export default function ShowProduct ({setId, reLoad, loadValue}) {
     }, [loadValue]); // Load is used to make the useEffect only render when he changes. 
 
     return(
-        <div>
+        <div className="ShowProduct_Card">
             {
                 // Check if the value of data is null and render the cards
                 data == null ? null : 
