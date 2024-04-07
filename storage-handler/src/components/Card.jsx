@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-export default function Card ({name, storage, price, id, setId, reLoad, loadValue}) {
+export default function Card ({name, storage, price, id, setId, reLoad}) {
 
     // Função de renderizar propriedades:
     function set () {
         setId(id);
-        reLoad(!loadValue);
+        reLoad((b) => !b);
     }
 
     return(

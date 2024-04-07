@@ -4,7 +4,7 @@ import slash from 'slash';
 
 // const { ipcRenderer } = window.require('electron');
 
-export default function Add ({ reLoad, loadValue }) {
+export default function Add ({ reLoad }) {
 
     const productName = useRef();
     const productStorage = useRef();
@@ -31,7 +31,7 @@ export default function Add ({ reLoad, loadValue }) {
                   return console.log(err.message);
                 }
                 // get the last insert id
-                reLoad(!loadValue); // Provoca a re-renderização do app;
+                reLoad((b) => !b); // Provoca a re-renderização do app;
             });
         
             db.close((err) => {

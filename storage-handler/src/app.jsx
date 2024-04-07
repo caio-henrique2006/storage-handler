@@ -64,12 +64,11 @@ function Main () {
             <div className="Main_left">
                 <Header
                     reLoad={setLoad} // Para re-renderizar a página
-                    loadValue={load}
                 />
                 <ShowProduct
                     setId = {setId}
                     reLoad = {setLoad}
-                    loadValue={load}
+                    loadValue = {load}
                 />
             </div>
             <div className="Main_right">
@@ -82,7 +81,7 @@ function Main () {
                             description={data.description}
                             id={id}
                             reLoad = {setLoad}
-                            loadValue={load}
+                            loadValue = {load}
                         />
                 }
             </div>

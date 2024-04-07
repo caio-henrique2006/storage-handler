@@ -39,17 +39,20 @@ export default function Properties ({ name, storage, price, description, id, reL
                 {/* Opens the modal */}
                 {
                     isOpen_entryExit ? <EntryExit 
-                    setIsOpen_entryExit={setIsOpen_entryExit} 
+                    setIsOpen={setIsOpen_entryExit} 
                     entryOrExit={entryOrExit} 
                     id={id}
                     reLoad={reLoad}
-                    loadValue={loadValue}
                     /> : null
                 }
             </div>
             <div>
                 {
-                    isOpen_Delete ? <Delete /> : null
+                    isOpen_Delete ? <Delete 
+                        id={id}
+                        reLoad={reLoad}
+                        setIsOpen_Delete={setIsOpen_Delete}
+                    /> : null
                 }
             </div>
             <p className="Properties_historic"><b>Histórico:</b> </p>

@@ -280,12 +280,13 @@ body {
     color: white;
     padding: 30px;
     filter: drop-shadow(10px 10px 10px gray);
+    text-align: center;
 }
 .Delete_flex {
     display: flex;
-    align-content: space-around;
+    align-content: space-between;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
 }
 .Delete_true {
     background-image: url("../assets/plus.png");
@@ -294,12 +295,18 @@ body {
     height: 36px;
     border-radius: 5px;
 }
+.Delete_true:hover {
+    cursor: pointer;
+}
 .Delete_false {
     background-image: url("../assets/close.png");
     background-size: cover;
     width: 36px;
     height: 36px;
     border-radius: 5px;
+}
+.Delete_false:hover {
+    cursor: pointer;
 }
 .Delete_icon {
     background-image: url("../assets/close.png");

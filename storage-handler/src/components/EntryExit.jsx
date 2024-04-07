@@ -3,7 +3,7 @@ import {useRef} from 'react';
 import slash from 'slash';
 
 // Entry and exit modal
-export default function EntryExit ({setIsOpen, entryOrExit, id, reLoad, loadValue}) {
+export default function EntryExit ({setIsOpen, entryOrExit, id, reLoad}) {
 
     const quantity = useRef();
     const date = useRef();
@@ -27,7 +27,7 @@ export default function EntryExit ({setIsOpen, entryOrExit, id, reLoad, loadValu
                   return console.log(err.message);
                 }
                 // get the last insert id
-                reLoad(!loadValue); // Provoca a re-renderização
+                reLoad((b) => !b); // Provoca a re-renderização
             });
         
             db.close((err) => {

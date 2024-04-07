@@ -67,7 +67,6 @@ export default function ShowProduct ({setId, reLoad, loadValue}) {
                             id={item.product_id}
                             setId={setId}
                             reLoad = {reLoad}
-                            loadValue={loadValue}
                         />
                     )
                 })
