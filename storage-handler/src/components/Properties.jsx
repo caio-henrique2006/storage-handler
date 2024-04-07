@@ -25,7 +25,7 @@ export default function Properties ({ name, storage, price, description, id, reL
     return(
         <div className="Properties">
 
-            <div class="Delete_icon" onClick={() => {setIsOpen_Delete(!isOpen_Delete)}}></div>
+            <div className="Delete_icon" onClick={() => {setIsOpen_Delete(!isOpen_Delete)}}></div>
 
             <p className="Properties_title">{name}</p>
             <p className="Properties_properties"><b>Total em estoque:</b> {storage}</p>
@@ -41,6 +41,7 @@ export default function Properties ({ name, storage, price, description, id, reL
                     isOpen_entryExit ? <EntryExit 
                     setIsOpen={setIsOpen_entryExit} 
                     entryOrExit={entryOrExit} 
+                    storage={storage}
                     id={id}
                     reLoad={reLoad}
                     /> : null
