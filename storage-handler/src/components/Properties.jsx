@@ -5,9 +5,11 @@ import { useState } from 'react';
 import Historic from './Historic.jsx';
 import EntryExit from './EntryExit.jsx';
 import Delete from './Delete.jsx';
+import Delete_historic from './Delete_historic.jsx';
 
 export default function Properties ({ name, storage, price, description, id, reLoad, loadValue}) {
 
+    const [isOpen_delete_historic, setIsOpen_delete_historic] = useState(false);
     const [isOpen_Delete, setIsOpen_Delete] = useState(false);
     const [isOpen_entryExit, setIsOpen_entryExit] = useState(false);
     const [entryOrExit, setEntryOrExit] = useState("");
@@ -56,7 +58,20 @@ export default function Properties ({ name, storage, price, description, id, reL
                     /> : null
                 }
             </div>
-            <p className="Properties_historic"><b>Histórico:</b> </p>
+            <div>
+                {
+                    isOpen_delete_historic ? <Delete_historic
+                        id={id}
+                        reLoad={reLoad}
+                        storage={storage}
+                        setIsOpen_delete_historic={setIsOpen_delete_historic}
+                    /> : null
+                }
+            </div>
+            <div>
+                <p className="Properties_historic"><b>Histórico:</b> </p>
+                <div className="Delete_false" onClick={() => {setIsOpen_delete_historic((b) => !b)}}></div>
+            </div>
             <div className="Properties_historic_content">
                 <Historic 
                     id={id}

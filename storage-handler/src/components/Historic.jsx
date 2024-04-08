@@ -33,6 +33,8 @@ export default function Historic ({id, loadValue}) {
             historic
         WHERE
             product_id = ?
+        ORDER BY
+            date DESC
         `;
     
         db.all(sql, [id], (err, rows) => {
