@@ -139,6 +139,7 @@ body {
     font-size: 20px;
 }
 
+
 /* Historic */
 .Historic {
     overflow-y: scroll;
@@ -267,7 +268,7 @@ body {
 
 /* Delete */
 .Delete {
-    --height: 400px;
+    --height: 200px;
     --width: 300px;
 
     position: absolute;
@@ -281,15 +282,17 @@ body {
     padding: 30px;
     filter: drop-shadow(10px 10px 10px gray);
     text-align: center;
+    margin-bottom: 30px;
 }
 .Delete_flex {
     display: flex;
-    align-content: space-between;
+    align-content: center;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+    height: 100%;
 }
 .Delete_true {
-    background-image: url("../assets/plus.png");
+    background-image: url("../assets/check.png");
     background-size: cover;
     width: 36px;
     height: 36px;
@@ -314,6 +317,7 @@ body {
     width: 36px;
     height: 36px;
     border-radius: 5px;
+    float: right;
 }
 .Delete_icon:hover {
     cursor: pointer;

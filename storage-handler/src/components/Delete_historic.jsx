@@ -22,21 +22,25 @@ export default function Delete_historic ({ id, reLoad, storage, setIsOpen_delete
                 if (err) {
                     throw err;
                 }
-                const newStorage = rows[0].isEntry == 1 ? storage - rows[0].quantity : storage + rows[0].quantity;
-                console.log(rows, newStorage);
-                // Updating storage:
-                db.run(`UPDATE product SET storage = ? WHERE product_id = ?`, [newStorage, id], function(err) {
-                    if (err) {
-                        return console.log(err.message);
-                    }
-                    // Deleting historic:
-                    db.run(`DELETE FROM historic WHERE historic_id = ?`, [rows[0].historic_id], function(err) {
+                if (!(rows[0] == undefined)) {
+                    const newerStorage = rows[0].isEntry == 1 ? storage - rows[0].quantity : storage + rows[0].quantity;
+                    const newStorage = newerStorage < 0 ? 0 : newerStorage;
+                    console.log(rows, newStorage);
+                
+                    // Updating storage:
+                    db.run(`UPDATE product SET storage = ? WHERE product_id = ?`, [newStorage, id], function(err) {
                         if (err) {
-                          return console.log(err.message);
+                            return console.log(err.message);
                         }
-                        reLoad((b) => !b); // Provoca a re-renderização
+                        // Deleting historic:
+                        db.run(`DELETE FROM historic WHERE historic_id = ?`, [rows[0].historic_id], function(err) {
+                            if (err) {
+                            return console.log(err.message);
+                            }
+                            reLoad((b) => !b); // Provoca a re-renderização
+                        });
                     });
-                });
+                }
             });
 
             db.close((err) => {
@@ -53,8 +57,8 @@ export default function Delete_historic ({ id, reLoad, storage, setIsOpen_delete
         <div className="Delete">
             <h1>Deletar último histórico?</h1>
             <div className="Delete_flex">
+                <div className="Delete_false" onClick={() => {setIsOpen_delete_historic((b) => !b)}}></div>
                 <div className="Delete_true" onClick={deleteProduct}></div>
-                <div className="Delete_false" onClick={() => {setIsOpen_Delete((b) => !b)}}></div>
             </div>
         </div>
     )

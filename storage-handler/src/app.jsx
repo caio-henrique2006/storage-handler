@@ -85,7 +85,7 @@ function Main () {
                         />
                 }
             </div>
-            <button onClick={() => {console.log(data, id)}}>Click</button>
+            {/* <button onClick={() => {console.log(data, id)}}>Click</button> */}
         </div>
     )
 }

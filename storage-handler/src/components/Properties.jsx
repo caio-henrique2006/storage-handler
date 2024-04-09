@@ -28,8 +28,8 @@ export default function Properties ({ name, storage, price, description, id, reL
         <div className="Properties">
 
             <div className="Delete_icon" onClick={() => {setIsOpen_Delete(!isOpen_Delete)}}></div>
-
             <p className="Properties_title">{name}</p>
+
             <p className="Properties_properties"><b>Total em estoque:</b> {storage}</p>
             <p className="Properties_properties"><b>Preço:</b> {price}</p>
             <p className="Properties_properties"><b>Descrição:</b> {description}</p>
@@ -70,7 +70,7 @@ export default function Properties ({ name, storage, price, description, id, reL
             </div>
             <div>
                 <p className="Properties_historic"><b>Histórico:</b> </p>
-                <div className="Delete_false" onClick={() => {setIsOpen_delete_historic((b) => !b)}}></div>
+                <div className="Delete_false" style={{width: 28, height: 28, float: 'right'}} onClick={() => {setIsOpen_delete_historic((b) => !b)}}></div>
             </div>
             <div className="Properties_historic_content">
                 <Historic 
