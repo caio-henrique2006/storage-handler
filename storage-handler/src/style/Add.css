@@ -1,0 +1,15 @@
+/* Add component*/
+.Add {
+    width: 10%;
+    height: 10%;
+}
+.Add_icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 5px;
+    background-image: url("../assets/plus.png");
+    background-size: cover;
+}
+.Add_icon:hover {
+    cursor: pointer;
+}

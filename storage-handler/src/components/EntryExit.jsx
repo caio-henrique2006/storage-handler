@@ -1,6 +1,10 @@
 import * as React from 'react';
+import insertHistoric from '../hooks/insertHistoric.jsx';
+
+import "../style/EntryExit.css";
+import "../style/Modal.css";
+
 import {useRef} from 'react';
-import slash from 'slash';
 import swal from "sweetalert"; 
 
 // Entry and exit modal
@@ -16,40 +20,7 @@ export default function EntryExit ({setIsOpen, entryOrExit, storage, id, reLoad}
         } else {
             setIsOpen(false);
             const newStorage = isEntry ? parseInt(storage)+parseInt(quantity.current.value) : parseInt(storage)-parseInt(quantity.current.value); // Calcula a nova quantidade armazenada;
-            async function addProductDatabase(isEntry, quantity, date, newStorage, product_id) {
-                const sqlite3 = require('sqlite3').verbose();
-                const path = require('path');
-                const dbPath = slash(path.resolve('src/database/dataBase.db'));
-            
-                let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE, (err) => {
-                    if (err) {
-                        return console.error(err);
-                    }
-                    console.log("Connected to the sqlite data");
-                });
-            
-                db.run(`INSERT INTO historic(isEntry, quantity, date, product_id) VALUES(?, ?, ?, ?)`, [isEntry, quantity, date, product_id], function(err) {
-                    if (err) {
-                    return console.log(err.message);
-                    }
-                });
-
-                db.run(`UPDATE product SET storage = ? WHERE product_id = ?`, [newStorage, product_id], function(err) {
-                    if (err) {
-                    return console.log(err.message);
-                    }
-                    // get the last insert id
-                    reLoad((b) => !b); // Provoca a re-renderização
-                });
-            
-                db.close((err) => {
-                    if (err) {
-                        return console.error(err.message);
-                    }
-                    console.log("Close database connection");
-                });
-            }
-            addProductDatabase(isEntry, quantity.current.value, date.current.value, newStorage, id); // Adicionando produto ao banco de dados
+            insertHistoric(isEntry, quantity.current.value, date.current.value, newStorage, id, reLoad); // Adicionando produto ao banco de dados
         }
     }
 

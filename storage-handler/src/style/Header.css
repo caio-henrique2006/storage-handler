@@ -1,0 +1,10 @@
+/* Header component */
+.Header {
+    margin-bottom: 20px;
+}
+.Header_content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

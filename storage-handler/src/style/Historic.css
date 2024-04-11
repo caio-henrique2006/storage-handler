@@ -1,0 +1,13 @@
+/* Historic */
+.Historic {
+    overflow-y: scroll;
+    height: 300px;
+}
+.Historic_Card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    border-bottom: 1px solid black;
+    font-size: 18px;
+}

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import "../style/Historic.css";
 
 export default function Historic_Card ({isEntry, quantity, date}) {
     return(

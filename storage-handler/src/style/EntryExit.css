@@ -1,0 +1,17 @@
+/* EntryExit */
+
+.EntryExit_Modal {
+    --height: 400px;
+    --width: 300px;
+
+    position: absolute;
+    left: calc(50% - calc(var(--width) / 2));
+    top: calc(50% - calc(var(--height) / 2));
+    background-color: #181818;
+    border-radius: 5px;
+    height: var(--height);
+    width: var(--width);
+    color: white;
+    padding: 30px;
+    filter: drop-shadow(10px 10px 10px gray);
+}

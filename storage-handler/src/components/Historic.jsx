@@ -1,6 +1,9 @@
 import * as React from 'react';
-import slash from 'slash';
+import "../style/Historic.css";
 import {useState, useEffect} from 'react';
+
+// hooks:
+import fetchHistoric from "../hooks/fetchHistoric.jsx"
 
 // components:
 import Historic_Card from './Historic_Card.jsx';
@@ -11,49 +14,8 @@ export default function Historic ({id, loadValue}) {
 
     // Executes after render:
     useEffect(() => {
-    console.log("The id is: ", id);
-    // Fetch historic of a product:
-    async function fetchHistoric (setData) {
-        const sqlite3 = require('sqlite3').verbose();
-        const path = require('path');
-        const dbPath = slash(path.resolve('src/database/dataBase.db'));
-    
-        let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY, (err) => {
-            if (err) {
-                return console.error(err);
-            }
-            console.log("Connected to the sqlite data");
-        });
-        
-        // sql command
-        let sql = `
-        SELECT 
-            *
-        FROM
-            historic
-        WHERE
-            product_id = ?
-        ORDER BY
-            date DESC
-        `;
-    
-        db.all(sql, [id], (err, rows) => {
-            if (err) {
-                throw err;
-            }
-            // Callback directly to set the state "data"
-            console.log(rows);
-            setData(rows);
-        });
-    
-        db.close((err) => {
-            if (err) {
-                return console.error(err.message);
-            }
-            console.log("Close database connection");
-        });
-    }  
-    fetchHistoric(setData);
+        console.log("The id is: ", id);
+        fetchHistoric(id, setData);    // Fetch historic of a product;
     }, [loadValue])
 
     return(

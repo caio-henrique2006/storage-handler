@@ -1,4 +1,5 @@
 import * as React from 'react';
+import "../style/Card.css";
 
 export default function Card ({name, storage, price, id, setId, reLoad}) {
 

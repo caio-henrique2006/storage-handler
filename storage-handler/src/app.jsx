@@ -1,6 +1,8 @@
 import * as React from 'react';
-import slash from 'slash';
 import "./style/Main.css"
+
+// hooks:
+import fetchProperties from './hooks/fetchProperties.jsx';
 import { createRoot } from 'react-dom/client';
 import { useState, useEffect } from 'react';
 
@@ -18,44 +20,7 @@ function Main () {
 
     // Da fetch para o componente properties:
     useEffect(() => {
-        async function getProperties(setData) {
-            const sqlite3 = require('sqlite3').verbose();
-            const path = require('path');
-            const dbPath = slash(path.resolve('src/database/dataBase.db'));
-            console.log(dbPath);
-        
-            let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY, (err) => {
-                if (err) {
-                    return console.error(err);
-                }
-                console.log("Connected to the sqlite data");
-            });
-        
-            let sql = `
-            SELECT 
-                *
-            FROM
-                product
-            WHERE
-                product_id = ?
-            `;
-        
-            db.get(sql, [id], (err, row) => {
-                if (err) {
-                  return console.error(err.message);
-                }
-                console.log(row);
-                setData(row);
-            });
-        
-            db.close((err) => {
-                if (err) {
-                    return console.error(err.message);
-                }
-                console.log("Close database connection");
-            });
-        }
-        getProperties(setData);
+        fetchProperties(id, setData);
         console.log("RELOADING EVERYTHING !!!");
     }, [load])  
 

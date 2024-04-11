@@ -1,0 +1,56 @@
+/* Delete */
+.Delete {
+    --height: 200px;
+    --width: 300px;
+
+    position: absolute;
+    left: calc(50% - calc(var(--width) / 2));
+    top: calc(50% - calc(var(--height) / 2));
+    background-color: #b1b1b1;
+    border-radius: 5px;
+    height: var(--height);
+    width: var(--width);
+    color: white;
+    padding: 30px;
+    filter: drop-shadow(10px 10px 10px gray);
+    text-align: center;
+    margin-bottom: 30px;
+}
+.Delete_flex {
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 100%;
+}
+.Delete_true {
+    background-image: url("../assets/check.png");
+    background-size: cover;
+    width: 36px;
+    height: 36px;
+    border-radius: 5px;
+}
+.Delete_true:hover {
+    cursor: pointer;
+}
+.Delete_false {
+    background-image: url("../assets/close.png");
+    background-size: cover;
+    width: 36px;
+    height: 36px;
+    border-radius: 5px;
+}
+.Delete_false:hover {
+    cursor: pointer;
+}
+.Delete_icon {
+    background-image: url("../assets/close.png");
+    background-size: cover;
+    width: 36px;
+    height: 36px;
+    border-radius: 5px;
+    float: right;
+}
+.Delete_icon:hover {
+    cursor: pointer;
+}

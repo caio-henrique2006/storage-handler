@@ -1,7 +1,8 @@
 import * as React from 'react';
+import "../style/Properties.css";
 import { useState } from 'react';
 
-// components:
+// Components:
 import Historic from './Historic.jsx';
 import EntryExit from './EntryExit.jsx';
 import Delete from './Delete.jsx';
@@ -26,19 +27,8 @@ export default function Properties ({ name, storage, price, description, id, reL
 
     return(
         <div className="Properties">
-
-            <div className="Delete_icon" onClick={() => {setIsOpen_Delete(!isOpen_Delete)}}></div>
-            <p className="Properties_title">{name}</p>
-
-            <p className="Properties_properties"><b>Total em estoque:</b> {storage}</p>
-            <p className="Properties_properties"><b>Preço:</b> {price}</p>
-            <p className="Properties_properties"><b>Descrição:</b> {description}</p>
-            <div className="Properties_buttons">
-                <div onClick={changeToEntry}>Entrada</div>
-                <div onClick={changeToExit}>Saída</div>
-            </div>
+            {/* Open Modals */}
             <div>
-                {/* Opens the modal */}
                 {
                     isOpen_entryExit ? <EntryExit 
                     setIsOpen={setIsOpen_entryExit} 
@@ -67,6 +57,18 @@ export default function Properties ({ name, storage, price, description, id, reL
                         setIsOpen_delete_historic={setIsOpen_delete_historic}
                     /> : null
                 }
+            </div>
+
+            {/* Properties component */}
+            <div className="Delete_icon" onClick={() => {setIsOpen_Delete(!isOpen_Delete)}}></div>
+            <p className="Properties_title">{name}</p>
+
+            <p className="Properties_properties"><b>Total em estoque:</b> {storage}</p>
+            <p className="Properties_properties"><b>Preço:</b> {price}</p>
+            <p className="Properties_properties"><b>Descrição:</b> {description}</p>
+            <div className="Properties_buttons">
+                <div onClick={changeToEntry}>Entrada</div>
+                <div onClick={changeToExit}>Saída</div>
             </div>
             <div>
                 <p className="Properties_historic"><b>Histórico:</b> </p>

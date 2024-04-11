@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { useState, useRef, useEffect } from 'react';
 import slash from 'slash';
+import "../style/Add.css";
+import "../style/Modal.css";
+
+// Hooks:
+import { useState, useRef } from 'react';
+import insertProduct from '../hooks/insertProduct.jsx';
 
 // const { ipcRenderer } = window.require('electron');
 
@@ -14,34 +19,7 @@ export default function Add ({ reLoad }) {
 
     function addProduct() {
         setIsOpen(!isOpen);
-        async function addProductDatabase(name, storage, price, description) {
-            const sqlite3 = require('sqlite3').verbose();
-            const path = require('path');
-            const dbPath = slash(path.resolve('src/database/dataBase.db'));
-        
-            let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE, (err) => {
-                if (err) {
-                    return console.error(err);
-                }
-                console.log("Connected to the sqlite data");
-            });
-        
-            db.run(`INSERT INTO product(name,storage,price,description) VALUES(?, ?, ?, ?)`, [name, storage, price, description], function(err) {
-                if (err) {
-                  return console.log(err.message);
-                }
-                // get the last insert id
-                reLoad((b) => !b); // Provoca a re-renderização do app;
-            });
-        
-            db.close((err) => {
-                if (err) {
-                    return console.error(err.message);
-                }
-                console.log("Close database connection");
-            });
-        }
-        addProductDatabase(productName.current.value, productStorage.current.value, productPrice.current.value, productDescription.current.value)
+        insertProduct(productName.current.value, productStorage.current.value, productPrice.current.value, productDescription.current.value, reLoad);
     }
 
     function Modal () {
