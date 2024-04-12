@@ -5,6 +5,8 @@ export default async function insertProduct(name, storage, price, description, r
     const path = require('path');
     const dbPath = slash(path.resolve('src/database/dataBase.db'));
 
+    
+
     let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE, (err) => {
         if (err) {
             return console.error(err);
@@ -12,7 +14,8 @@ export default async function insertProduct(name, storage, price, description, r
         console.log("Connected to the sqlite data");
     });
 
-    db.run(`INSERT INTO product(name,storage,price,description) VALUES(?, ?, ?, ?)`, [name, storage, price, description], function(err) {
+    console.log(name, storage, price, description);
+    db.run(`INSERT INTO product(name,storage,price,description) VALUES(?, ?, ?, ?)`, [name==""?"Sem nome":name, storage==""?0:storage, price==""?"0":price, description==""?"Sem descrição":description], function(err) {
         if (err) {
           return console.log(err.message);
         }
