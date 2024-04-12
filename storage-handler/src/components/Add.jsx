@@ -25,23 +25,25 @@ export default function Add ({ reLoad }) {
     function Modal () {
         return (
             <div className="Modal">
-                <h1 className="Modal_h1">Novo Produto</h1>
-                <div className="Modal_grid">
-                    <div className="Modal_left">
-                        <p className="Modal_p">Nome do produto:</p>
-                        <input className="Modal_input" ref={productName}/>
-                        <p className="Modal_p">Estoque:</p>
-                        <input type="number" className="Modal_input" ref={productStorage}/>
-                        <p className="Modal_p">Preço:</p>
-                        <input type="number" className="Modal_input" ref={productPrice}/>
+                <form onSubmit={addProduct}>
+                    <h1 className="Modal_h1">Novo Produto</h1>
+                    <div className="Modal_grid">
+                        <div className="Modal_left">
+                            <p className="Modal_p">Nome do produto:</p>
+                            <input className="Modal_input" ref={productName} required/>
+                            <p className="Modal_p">Estoque:</p>
+                            <input type="number" className="Modal_input" ref={productStorage} required/>
+                            <p className="Modal_p">Preço:</p>
+                            <input type="number" className="Modal_input" ref={productPrice}/>
+                        </div>
+                        <div className="Modal_right">
+                            <p className="Modal_p">Descrição</p>
+                            <textarea className="Modal_textarea" ref={productDescription}/>
+                        </div>
                     </div>
-                    <div className="Modal_right">
-                        <p className="Modal_p">Descrição</p>
-                        <textarea className="Modal_textarea" ref={productDescription}/>
-                    </div>
-                </div>
-                <div className="Modal_close" onClick={() => {setIsOpen(!isOpen)}}/>
-                <div className="Modal_ok" onClick={addProduct}>Criar</div>
+                    <div className="Modal_close" onClick={() => {setIsOpen(!isOpen)}}/>
+                    <input type="submit" className="Modal_ok" Value="Criar" />
+                </form>
             </div>
         )
     }

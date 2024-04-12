@@ -5,7 +5,7 @@ export default async function insertHistoric(isEntry, quantity, date, newStorage
     const path = require('path');
     const dbPath = slash(path.resolve('src/database/dataBase.db'));
 
-    const storage = newStorage == null ? 0 : newStorage;
+    const storage = newStorage == null || newStorage == undefined || newStorage == "" ? 0 : newStorage;
 
     let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE, (err) => {
         if (err) {

@@ -5,8 +5,6 @@ export default async function insertProduct(name, storage, price, description, r
     const path = require('path');
     const dbPath = slash(path.resolve('src/database/dataBase.db'));
 
-    
-
     let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE, (err) => {
         if (err) {
             return console.error(err);

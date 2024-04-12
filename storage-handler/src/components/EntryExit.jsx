@@ -26,13 +26,15 @@ export default function EntryExit ({setIsOpen, entryOrExit, storage, id, reLoad}
 
     return (
         <div className="EntryExit_Modal">
-            <h1 className="Modal_h1">{entryOrExit}</h1>
-            <p className="Modal_p">Quantidade:</p>
-            <input type="number" className="Modal_input" ref={quantity} />
-            <p className="Modal_p">Data:</p>
-            <input type="date" className="Modal_input" ref={date} />
-            <div className="Modal_ok" onClick={addHistoric}>Ok</div>
-            <div className="Modal_close" onClick={() => {setIsOpen(false)}}/>
+            <form onSubmit={addHistoric}>
+                <h1 className="Modal_h1">{entryOrExit}</h1>
+                <p className="Modal_p">Quantidade:</p>
+                <input type="number" className="Modal_input" ref={quantity} required/>
+                <p className="Modal_p">Data:</p>
+                <input type="date" className="Modal_input" ref={date} required/>
+                <input type="submit" className="Modal_ok" value="ok"/>
+                <div className="Modal_close" onClick={() => {setIsOpen(false)}}/>
+            </form>
         </div>
     )
 }       
