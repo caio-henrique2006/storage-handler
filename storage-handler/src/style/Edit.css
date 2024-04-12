@@ -1,0 +1,10 @@
+.Edit_icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 5px;
+    background-image: url("../assets/pencil.png");
+    background-size: cover;
+}
+.Edit_icon:hover {
+    cursor: pointer;
+}
