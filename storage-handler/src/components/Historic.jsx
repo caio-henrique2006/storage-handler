@@ -1,43 +1,39 @@
-import * as React from 'react';
+import * as React from "react";
 import "../style/Historic.css";
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from "react";
 
 // hooks:
-import fetchHistoric from "../hooks/fetchHistoric.jsx"
+import fetchHistoric from "../hooks/fetchHistoric.jsx";
 
 // components:
-import Historic_Card from './Historic_Card.jsx';
+import Historic_Card from "./Historic_Card.jsx";
 
-export default function Historic ({id, loadValue}) {
+export default function Historic({ id, loadValue }) {
+  const [data, setData] = useState(null);
 
-    const [data, setData] = useState(null);
+  // Executes after render:
+  useEffect(() => {
+    console.log("The id is: ", id);
+    fetchHistoric(id, setData); // Fetch historic of a product;
+  }, [loadValue]);
 
-    // Executes after render:
-    useEffect(() => {
-        console.log("The id is: ", id);
-        fetchHistoric(id, setData);    // Fetch historic of a product;
-    }, [loadValue])
-
-    return(
-        <div className="Historic">
-            {
-                console.log(data)
-            }
-            {
-                // console.log(data, id)
-                data &&
-                data.map((item) => {
-                    return(
-                        <Historic_Card 
-                            key={item.historic_id}
-                            isEntry={item.isEntry ? "Entrada" : "Saída"}
-                            quantity={item.quantity}
-                            date={item.date}
-                        />
-                    )
-                })
-            }
-
-        </div>
-    )
+  return (
+    <div className="Historic">
+      {console.log(data)}
+      {
+        // console.log(data, id)
+        data &&
+          data.map((item) => {
+            return (
+              <Historic_Card
+                key={item.historic_id}
+                isEntry={item.isEntry ? "Entrada" : "Saída"}
+                quantity={item.quantity}
+                date={item.date}
+              />
+            );
+          })
+      }
+    </div>
+  );
 }

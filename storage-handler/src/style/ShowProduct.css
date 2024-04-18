@@ -1,4 +1,6 @@
 /* ShowProduct component*/
-.ShowProduct_card {
-    overflow-y: scroll;
+.ShowProduct_Card {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 80vh;
 }
