@@ -1,5 +1,4 @@
 import * as React from "react";
-import slash from "slash";
 import "../style/Add.css";
 import "../style/Modal.css";
 

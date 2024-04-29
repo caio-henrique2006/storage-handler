@@ -5,11 +5,11 @@ import "../style/Header.css";
 import SearchBar from "./SearchBar.jsx";
 import Add from "./Add.jsx";
 
-export default function Header({ reLoad }) {
+export default function Header({ reLoad, setSearchValue }) {
   return (
     <div className="Header">
       <div className="Header_content">
-        <SearchBar />
+        <SearchBar setSearchValue={setSearchValue} />
         <Add reLoad={reLoad} />
       </div>
     </div>
