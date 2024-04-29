@@ -19,6 +19,7 @@ export default function EntryExit({
   const date = useRef();
 
   function addHistoric() {
+    console.log(date.current.value);
     const isEntry = entryOrExit == "Entrada" ? true : false;
     if (!isEntry && parseInt(storage) - parseInt(quantity.current.value) < 0) {
       swal(

@@ -1,13 +1,16 @@
 /* Historic */
 .Historic {
-    overflow-y: scroll;
-    height: 300px;
+  overflow-y: scroll;
+  height: 300px;
 }
 .Historic_Card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    border-bottom: 1px solid black;
-    font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  border-bottom: 1px solid black;
+  font-size: 18px;
+}
+.Historic_Card_EntryExit {
+  width: 50px;
 }

@@ -19,11 +19,10 @@ export default function Historic({ id, loadValue }) {
 
   return (
     <div className="Historic">
-      {console.log(data)}
       {
         // console.log(data, id)
         data &&
-          data.map((item) => {
+          data.toReversed().map((item) => {
             return (
               <Historic_Card
                 key={item.historic_id}
