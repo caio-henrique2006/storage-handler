@@ -94,7 +94,7 @@ export default function Properties({
         <b>Total em estoque:</b> {storage}
       </p>
       <p className="Properties_properties">
-        <b>Preço:</b> {price}
+        <b>Preço: R$</b> {price}
       </p>
       <p className="Properties_properties">
         <b>Descrição:</b> {description}

@@ -1,30 +1,30 @@
 /* Properties component */
 .Properties_title {
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-    margin-top: 0px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 0px;
 }
 .Properties_properties {
-    font-size: 20px;
+  font-size: 28px;
 }
 .Properties_buttons {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
 }
 .Properties_buttons div {
-    background-color: rgb(202, 202, 202);
-    border-radius: 5px;
-    padding: 30px 120px;
-    margin: 10px;
-    font-size: 24px;
+  background-color: rgb(202, 202, 202);
+  border-radius: 5px;
+  padding: 30px 120px;
+  margin: 10px;
+  font-size: 24px;
 }
 .Properties_buttons div:hover {
-    cursor: pointer;
-    background-color: rgb(189, 189, 189);
+  cursor: pointer;
+  background-color: rgb(189, 189, 189);
 }
 .Properties_historic {
-    font-size: 20px;
+  font-size: 20px;
 }
