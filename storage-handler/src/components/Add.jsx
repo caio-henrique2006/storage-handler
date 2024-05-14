@@ -43,7 +43,12 @@ export default function Add({ reLoad }) {
                 required
               />
               <p className="Modal_p">Preço:</p>
-              <input type="number" className="Modal_input" ref={productPrice} />
+              <input
+                type="number"
+                step="0.01"
+                className="Modal_input"
+                ref={productPrice}
+              />
             </div>
             <div className="Modal_right">
               <p className="Modal_p">Descrição</p>
@@ -56,7 +61,7 @@ export default function Add({ reLoad }) {
               setIsOpen(!isOpen);
             }}
           />
-          <input type="submit" className="Modal_ok" Value="Criar" />
+          <input type="submit" className="Modal_ok" value="Criar" />
         </form>
       </div>
     );

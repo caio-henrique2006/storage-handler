@@ -5,7 +5,6 @@ import "../style/EntryExit.css";
 import "../style/Modal.css";
 
 import { useRef } from "react";
-import swal from "sweetalert";
 
 // Entry and exit modal
 export default function EntryExit({
@@ -21,24 +20,18 @@ export default function EntryExit({
   function addHistoric() {
     console.log(date.current.value);
     const isEntry = entryOrExit == "Entrada" ? true : false;
-    if (!isEntry && parseInt(storage) - parseInt(quantity.current.value) < 0) {
-      swal(
-        `Você possui apenas ${storage} em estoque, por isso você não pode retirar a quantidade: ${quantity.current.value}`
-      );
-    } else {
-      setIsOpen(false);
-      const newStorage = isEntry
-        ? parseInt(storage) + parseInt(quantity.current.value)
-        : parseInt(storage) - parseInt(quantity.current.value); // Calcula a nova quantidade armazenada;
-      insertHistoric(
-        isEntry,
-        quantity.current.value,
-        date.current.value,
-        newStorage,
-        id,
-        reLoad
-      ); // Adicionando produto ao banco de dados
-    }
+    setIsOpen(false);
+    const newStorage = isEntry
+      ? parseInt(storage) + parseInt(quantity.current.value)
+      : parseInt(storage) - parseInt(quantity.current.value); // Calcula a nova quantidade armazenada;
+    insertHistoric(
+      isEntry,
+      quantity.current.value,
+      date.current.value,
+      newStorage,
+      id,
+      reLoad
+    ); // Adicionando produto ao banco de dados
   }
 
   return (
@@ -46,7 +39,13 @@ export default function EntryExit({
       <form onSubmit={addHistoric}>
         <h1 className="Modal_h1">{entryOrExit}</h1>
         <p className="Modal_p">Quantidade:</p>
-        <input type="number" className="Modal_input" ref={quantity} required />
+        <input
+          type="number"
+          max={parseInt(storage)}
+          className="Modal_input"
+          ref={quantity}
+          required
+        />
         <p className="Modal_p">Data:</p>
         <input type="date" className="Modal_input" ref={date} required />
         <input type="submit" className="Modal_ok" value="ok" />

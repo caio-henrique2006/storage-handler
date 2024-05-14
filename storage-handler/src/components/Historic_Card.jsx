@@ -6,7 +6,7 @@ export default function Historic_Card({ isEntry, quantity, date }) {
     <div className="Historic_Card">
       <p className="Historic_Card_EntryExit">{isEntry}</p>
       <p>{quantity}</p>
-      <p>{date}</p>
+      <p>{date.split("-").reverse().join("/")}</p>
     </div>
   );
 }
