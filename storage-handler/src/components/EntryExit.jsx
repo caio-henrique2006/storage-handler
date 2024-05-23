@@ -41,7 +41,6 @@ export default function EntryExit({
         <p className="Modal_p">Quantidade:</p>
         <input
           type="number"
-          max={parseInt(storage)}
           className="Modal_input"
           ref={quantity}
           required

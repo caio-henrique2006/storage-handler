@@ -1,4 +1,8 @@
 /* Properties component */
+.Properties {
+  height: 100vh;
+  overflow-y: scroll;
+}
 .Properties_title {
   text-align: center;
   font-size: 40px;

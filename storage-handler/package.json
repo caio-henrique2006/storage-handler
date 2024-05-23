@@ -49,6 +49,7 @@
     "slash": "^5.1.0",
     "sqlite3": "^5.1.7",
     "sweetalert": "^2.1.2",
-    "sweetalert2": "^11.11.0"
+    "sweetalert2": "^11.11.0",
+    "yarn": "^1.22.22"
   }
 }
