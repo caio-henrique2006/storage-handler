@@ -6,7 +6,7 @@ import fetchProduct from "../hooks/fetchProducts.jsx";
 // Components:
 import Card from "./Card.jsx";
 
-export default function ShowProduct({ setId, reLoad, loadValue, searchValue }) {
+export default function ShowProduct({ setId, id, reLoad, loadValue, searchValue }) {
   // States:
   const [data, setData] = useState(null);
 
@@ -38,6 +38,7 @@ export default function ShowProduct({ setId, reLoad, loadValue, searchValue }) {
                     id={item.product_id}
                     setId={setId}
                     reLoad={reLoad}
+                    isSelected={item.product_id == id ? true : false}
                   />
                 );
               }
