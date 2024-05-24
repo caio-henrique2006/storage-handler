@@ -1,16 +1,15 @@
 /* Properties component */
-.Properties {
-  height: 100vh;
-  overflow-y: scroll;
-}
 .Properties_title {
   text-align: center;
   font-size: 40px;
   font-weight: bold;
+  margin-bottom: 30px;
   margin-top: 0px;
 }
 .Properties_properties {
   font-size: 28px;
+  margin: 0px;
+  margin-bottom: 15px;
 }
 .Properties_buttons {
   display: flex;
@@ -31,4 +30,27 @@
 }
 .Properties_historic {
   font-size: 20px;
+}
+.Properties_delete {
+  position: absolute;
+  right: 5%;
+  background-image: url("../assets/close.png");
+  background-size: cover;
+  width: 36px;
+  height: 36px;
+  border-radius: 5px;
+}
+.Properties_edit {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 5px;
+  background-image: url("../assets/pencil.png");
+  background-size: cover;
+}
+.Properties_delete:hover {
+  cursor: pointer;
+}
+.Properties_edit:hover {
+  cursor: pointer;
 }
