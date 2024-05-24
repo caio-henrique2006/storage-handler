@@ -12,7 +12,8 @@ export default function Card({ name, storage, price, id, setId, reLoad, isSelect
   }
 
   return (
-    <div onClick={set} className="Card" style={isSelected ? {backgroundColor: 'rgb(155, 155, 155)'} : null}>
+    // Shows who is selected:
+    <div onClick={set} className="Card" style={isSelected ? {backgroundColor: 'rgb(165, 165, 165)'} : null}>
       <div className="Card_left_flex">
         <div className="Card_storage">
           <p>{storage}</p>
