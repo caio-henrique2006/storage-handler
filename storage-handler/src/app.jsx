@@ -33,6 +33,7 @@ function Main() {
         />
         <ShowProduct
           setId={setId}
+          id={id}
           reLoad={setLoad}
           loadValue={load}
           searchValue={searchValue}

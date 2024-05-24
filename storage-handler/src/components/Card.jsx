@@ -1,7 +1,10 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
 import "../style/Card.css";
 
-export default function Card({ name, storage, price, id, setId, reLoad }) {
+export default function Card({ name, storage, price, id, setId, reLoad, isSelected}) {
+
+
   // Função de renderizar propriedades:
   function set() {
     setId(id);
@@ -9,7 +12,7 @@ export default function Card({ name, storage, price, id, setId, reLoad }) {
   }
 
   return (
-    <div onClick={set} className="Card">
+    <div onClick={set} className="Card" style={isSelected ? {backgroundColor: 'rgb(155, 155, 155)'} : null}>
       <div className="Card_left_flex">
         <div className="Card_storage">
           <p>{storage}</p>
