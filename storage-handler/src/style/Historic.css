@@ -1,7 +1,7 @@
 /* Historic */
 .Historic {
   overflow-y: scroll;
-  height: 300px;
+  height: 200px;
 }
 .Historic_Card {
   display: flex;

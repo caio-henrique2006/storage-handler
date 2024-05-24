@@ -79,13 +79,13 @@ export default function Properties({
 
       {/* Properties component */}
       <div
-        className="Delete_icon"
+        className="Properties_delete"
         onClick={() => {
           setIsOpen_Delete(!isOpen_Delete);
         }}
       ></div>
       <div
-        className="Edit_icon"
+        className="Properties_edit"
         onClick={() => setIsOpen_Edit((b) => !b)}
       ></div>
       <p className="Properties_title">{name}</p>
@@ -94,7 +94,7 @@ export default function Properties({
         <b>Total em estoque:</b> {storage}
       </p>
       <p className="Properties_properties">
-        <b>Preço: R$</b> {price}
+        <b>Preço: </b> R$ {price}
       </p>
       <p className="Properties_properties">
         <b>Descrição:</b> {description}

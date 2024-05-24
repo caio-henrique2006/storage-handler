@@ -19,3 +19,21 @@ body {
     grid-column: 2;
     margin: 20px;
 }
+@media (max-width: 900px) {
+    .body {
+        overflow-x: scroll;
+    }
+    .Main {
+        display: block;
+        overflow-y: scroll;
+        height: 100vh;
+    }
+    .Main_left {
+        margin: 20px;
+        border-right: 0px solid black;
+        height: 100%;
+    }
+    .Main_right {
+        margin: 20px;
+    }
+}
