@@ -10,7 +10,7 @@ export default function Delete({ id, reLoad, setIsOpen_Delete }) {
   }
 
   return (
-    <div className="Delete">
+    <div className="Delete" style={{height: '150px'}}>
       <h1>Deletar produto?</h1>
       <div className="Delete_flex">
         <div
