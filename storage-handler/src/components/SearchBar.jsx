@@ -12,7 +12,6 @@ export default function SearchBar({ setSearchValue }) {
 
   return (
     <div className="SearchBar">
-      <div className="SearchBar_container">
         <input
           ref={searchValue}
           onChange={updateValue}
@@ -21,7 +20,6 @@ export default function SearchBar({ setSearchValue }) {
           placeholder="Procurar..."
           name="search"
         />
-      </div>
     </div>
   );
 }

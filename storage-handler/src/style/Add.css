@@ -9,6 +9,7 @@
     border-radius: 5px;
     background-image: url("../assets/plus.png");
     background-size: cover;
+    margin-left: 10px;
 }
 .Add_icon:hover {
     cursor: pointer;
