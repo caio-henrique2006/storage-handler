@@ -2,9 +2,9 @@
 .SearchBar {
     width: 100%;
 }
-.SearchBar_container {
+/* .SearchBar_container {
     width: 100%;
-}
+} */
 .SearchBar_container_input {
     width: 90%;
     height: 25px;

@@ -1,0 +1,8 @@
+.SideMenu_icon {
+    width: 36px;
+    height: 36px;
+    /* border-radius: 5px; */
+    background-image: url("../assets/SideMenu_icon.png");
+    background-size: cover;
+    margin-right: 10px;
+}
