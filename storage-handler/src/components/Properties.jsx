@@ -96,7 +96,7 @@ export default function Properties({
       <p className="Properties_properties">
         <b>Preço: </b> R$ {price}
       </p>
-      <p className="Properties_properties">
+      <p className="Properties_properties" style={{maxHeight: '100px'}}>
         <b>Descrição:</b> {description}
       </p>
       <div className="Properties_buttons">

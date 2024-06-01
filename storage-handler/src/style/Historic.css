@@ -10,7 +10,11 @@
   flex-direction: row;
   border-bottom: 1px solid black;
   font-size: 18px;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 .Historic_Card_EntryExit {
-  width: 50px;
+  font-size: 22px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
